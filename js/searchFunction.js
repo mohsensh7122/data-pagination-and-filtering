@@ -13,20 +13,24 @@ const searchInput = document.getElementById('search');
 
 searchInput.addEventListener('keyup', e => {
     let inputValue = e.target.value.toLowerCase();
-    console.log(inputValue);
+    const results = [];
 
-    students.forEach(student => {
-        if(student.textContent.toLowerCase().includes(inputValue)){
-            student.parentNode.parentNode.style.display = 'block';
-            student.parentNode.parentNode.classList.add('match');
-            let newList = document.querySelector('.match');
-            
-        } else {
-            student.parentNode.parentNode.style.display = 'none';
-            student.parentNode.parentNode.classList.remove('match');
-        }
+    data.forEach(student => {
+        const firstName = student.name.first.toLowerCase();
+        const lastName = student.name.last.toLowerCase();
+        const fullName = `${firstName} ${lastName}`;
+        if(firstName.includes(inputValue) || lastName.includes(inputValue) || fullName.includes(inputValue)){
+            results.push(student);
+            console.log(results.length);
+            showPage(results, 1)
+            addPagination(results);
+        } 
     })
 
+    if (results.length === 0){
+        document.querySelector('.student-list').innerHTML = `<h4 class="no-results">No results found</h4>`;
+        addPagination(results);
+    }
     // const matches = document.querySelectorAll('.match');
     // console.log(matches.length);
     // addPagination(matches)
