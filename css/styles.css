@@ -2,6 +2,17 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600;800&display=swap');
 
+
+:root {
+  --color-primary: #0B2447;
+  --color-secondary: #19376D;
+  --color-tertriary: #576CBC;
+  --sea-blue: #A5D7E8;
+  --brown: #867070;
+  --cream-pink: #D5B4B4;
+  --cream-light: #E4D0D0;
+}
+
 * {
 	box-sizing: border-box;
 }
